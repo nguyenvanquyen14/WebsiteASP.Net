@@ -1,0 +1,48 @@
+﻿@model MyClass.Models.Post
+@{
+    ViewBag.Title = "PostDetail";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+<div class="container">
+    <div class="row mb-5">
+        <div class="content text-center">
+            <h2>@Model.Title</h2>
+        </div>
+        <div class="text-center"><img src="~/Public/images/posts/@Model.Img" width="900" height="400" /></div>
+
+        <p class="animated wow fadeInUp animated" data-wow-delay=".5s ">@Html.Raw(Model.Detail)</p>
+    </div>
+    <div class="row mb-5">
+        <div class="content">
+            <h2>Bài viết khác : </h2>
+        </div>
+        <form class="form-horizontal">
+            @foreach (var post in ViewBag.ListOther)
+            {
+                <div class="row">
+                    <div class="col-md-9 col-md-push-3">
+                        <div class="card-body">
+                            <h4 class="blog-post-title">
+                                <a href="~/@post.Slug">@post.Title</a>
+                            </h4>
+                            <div class="blog-post-meta">
+                            </div>
+
+                            <p class="card-text"><small class="text-muted">@XString.Str_Limit(post.Detail, 300)</small></p>
+
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-md-pull-9">
+                        <div class="img-box ">
+                            <a href="~/@post.Slug">
+                                <img src="~/Public/images/posts/@post.Img" alt="image" class="img-responsive zoom-img">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </form>
+    </div>
+</div>
+

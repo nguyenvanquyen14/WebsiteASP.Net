@@ -1,0 +1,87 @@
+﻿@model MyClass.Models.Menu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper my-2">
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong class="text-danger text-uppercase">Chi tiết danh mục</strong>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <a href="@Url.Action("Edit","Menu" ,new { id = Model.Id })" class="btn btn-sm btn-success"><i class="fas fa-edit"></i>Cập nhật</a>
+                        <a class="btn btn-sm btn-info" href="@Url.Action("Index","Menu")"><i class="fas fa-backward"></i>  Quay về danh sách</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th style="width:120px">Tên trường</th>
+                        <th>Nội dung</th>
+                    </tr>
+                    <tr>
+                    <td>Tên</td>
+                    <td> @Html.DisplayFor(model => model.Name)</td>
+                    </tr>
+                    <tr>
+                        <td> Link </td>
+                        <td>@Html.DisplayFor(model => model.Link)</td>
+                    </tr>
+                    <tr>
+                        <td>  Đặt hàng</td>
+                        <td> @Html.DisplayFor(model => model.Orders)</td>
+                    </tr>
+                    <tr>
+                        <td> Kiểu</td>
+                        <td> @Html.DisplayFor(model => model.Type)</td>
+                    </tr>
+                    <tr>
+                        <td>Chức vụ</td>
+                        <td>@Html.DisplayFor(model => model.Position)</td>
+                    </tr>
+                    <tr>
+                        <td> Tạo lúc</td>
+                        <td>@Html.DisplayFor(model => model.Created_At)</td>
+                    </tr>
+                    <tr>
+                        <td>Người tạo</td>
+                        <td>@Html.DisplayFor(model => model.Created_By)</td>
+                    </tr>
+                    <tr>
+                        <td> Cập nhật lúc</td>
+                        <td> @Html.DisplayFor(model => model.Updated_At)</td>
+                    </tr>
+                    <tr>
+                        <td> Người cập nhật </td>
+                        <td> @Html.DisplayFor(model => model.Updated_By)</td>
+                    </tr>
+                    <tr>
+                        <td> Cấp cha</td>
+                        <td>  @Html.DisplayFor(model => model.Parentid)</td>
+                    </tr>
+                    <tr>
+                        <td> Mã bảng</td>
+                        <td> @Html.DisplayFor(model => model.Tableid)</td>
+                    </tr>
+                    <tr>
+                        <td> Trạng thái</td>
+                        <td>  @Html.DisplayFor(model => model.Status)</td>
+                    </tr>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

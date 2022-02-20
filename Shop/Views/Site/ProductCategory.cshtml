@@ -1,0 +1,53 @@
+﻿@model PagedList.IPagedList<MyClass.Models.ProductInfo>
+@{
+    var category = ViewBag.Category;
+}
+@{
+    ViewBag.Title = category.Name;
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+@using PagedList.Mvc;
+
+    <div class="main">
+        <div class="content">          
+            <div class="section group">
+                <div class="cont-desc span_1_of_2">
+                    <div class="content_top">
+                        <div class="heading">
+                            <h3>@category.Name</h3>
+                        </div>
+                        <div class="see">
+                            <p><a href="#">Xem tất cả</a></p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="section group">
+                        @foreach (var product in Model)
+                        {
+                            <div class="grid_1_of_4 images_1_of_4">
+                                <a href="~/@product.Slug"><img src="~/Public/images/products/@product.Img" alt="" /></a>
+                                <a href="~/@product.Slug">@product.Name </a>
+                                <div class="price-details">
+                                    <div class="text-center">
+                                        <strong class="text-success">@string.Format("{0:0,0}", product.PriceSale) <sup>đ</sup></strong>
+                                        <del> <span class="text-danger">@string.Format("{0:0,0}", product.Price)</span></del><sup>đ</sup>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="add-cart">
+                                    <h4><a href="@Url.Action("CartAdd","Giohang", new {productid = product.Id })">Thêm vào giỏ hàng </a></h4>
+
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            @Html.PagedListPager(Model, page => Url.Action("Index", "Site", new { page }))
+                        </div>
+                    </div>
+                </div>
+                @Html.Action("ListCategory", "Module")
+            </div>
+        </div>
+    </div>

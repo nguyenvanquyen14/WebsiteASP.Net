@@ -1,0 +1,18 @@
+﻿@model IEnumerable<MyClass.Models.Category>
+@{
+    ViewBag.Title = "Trang Chủ";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+    @Html.Action("Slideshow", "Module")
+    <div class="clear"></div>
+
+        @foreach (var category in Model)
+        {
+            @Html.Action("HomeProduct", "Site", new { @id = category.Id })
+
+        }
+   
+
+
+

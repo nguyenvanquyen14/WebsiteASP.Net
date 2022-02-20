@@ -1,0 +1,126 @@
+﻿@model MyClass.Models.Product
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+
+    <div class="main">
+        <div class="content">        
+            <div class="section group">
+                <div class="cont-desc span_1_of_2">
+                    <div class="product-details">
+                        <div class="grid images_3_of_2">
+                            <div id="container">
+                                <div id="products_example">
+                                    <div id="products">
+                                        <div class="slides_container">
+                                            <a href="#" target="_blank"><img src="~/Public/images/products/@Model.Img" alt=" "  /></a>
+                                            <a href="#" target="_blank"><img src="~/Public/images/products/@Model.Img" alt=" " /></a>
+                                            <a href="#" target="_blank"><img src="~/Public/images/products/@Model.Img" alt=" " /></a>
+                                            <a href="#" target="_blank"><img src="~/Public/images/products/@Model.Img" alt=" " /></a>
+                                            <a href="#" target="_blank"><img src="~/Public/images/products/@Model.Img" alt=" " /></a>
+                                            <a href="#" target="_blank"><img src="~/Public/images/products/@Model.Img" alt=" " /></a>
+                                        </div>
+                                        <ul class="pagination">
+                                            <li><a href="#"><img src="~/Public/images/products/@Model.Img" alt=" " /></a></li>
+                                            <li><a href="#"><img src="~/Public/images/products/@Model.Img" alt=" " /></a></li>
+                                            <li><a href="#"><img src="~/Public/images/products/@Model.Img" alt=" " /></a></li>
+                                            <li><a href="#"><img src="~/Public/images/products/@Model.Img" alt=" " /></a></li>
+                                            <li><a href="#"><img src="~/Public/images/products/@Model.Img" alt=" " /></a></li>
+                                            <li><a href="#"><img src="~/Public/images/products/@Model.Img" alt=" " /></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="desc span_3_of_2">
+                            <h2>@Model.Name </h2>
+                            <p>@Model.Detail</p>
+                            <div class="price">
+                                <p>GIÁ: <span>@string.Format("{0:0,0}", Model.PriceSale)</span></p>
+                                <del> <span class="text-danger">@string.Format("{0:0,0}", Model.Price)</span></del><sup>đ</sup>
+                            </div>
+                            <div class="available">
+                                <p>TÙY CHỌN :</p>
+                                <ul>
+                                    <li>
+                                        Màu:
+                                        <select>
+                                            <option>Bạc</option>
+                                            <option>Đen</option>
+                                            <option>Đen sẫm</option>
+                                            <option>Đỏ</option>
+                                        </select>
+                                    </li>
+                                    <li>
+                                        Size:<select>
+                                            <option>Lớn</option>
+                                            <option>Trung bình</option>
+                                            <option>Nhỏ</option>
+
+                                        </select>
+                                    </li>
+                                    <li>
+                                        Số lượng:<select>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="share-desc">
+                                <div class="share">
+                                    <p>Chia sẻ sản phẩm :</p>
+                                    <ul>
+                                        <li><a href="#"><img src="~/Public/images/products/facebook.png" alt="" /></a></li>
+                                        <li><a href="#"><img src="~/Public/images/products/twitter.png" alt="" /></a></li>
+                                    </ul>
+                                </div>
+                                <div class="button"><span><a href="@Url.Action("CartAdd","Giohang", new {productid = Model.Id })">Thêm giỏ hàng</a></span></div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="product_desc">
+                        <div id="horizontalTab">
+                            <ul class="resp-tabs-list">
+                                <li>MÔ TẢ SẢN PHẨM </li>
+                                <li> NHẬN XÉT</li>
+
+                            </ul>
+                            <div class="resp-tabs-container">
+                                <div class="product-desc">
+                                    <p>@Model.MetaDesc</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $('#horizontalTab').easyResponsiveTabs({
+                                type: 'default', //Types: default, vertical, accordion
+                                width: 'auto', //auto or any width like 600px
+                                fit: true   // 100% fit in a container
+                            });
+                        });
+                    </script>                   
+                </div>
+                @Html.Action("ListCategory", "Module")
+            </div>
+        </div>
+    </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $().UItoTop({ easingType: 'easeOutQuart' });
+
+    });
+</script>
+<a href="#" id="toTop"><span id="toTopHover"> </span></a>
+

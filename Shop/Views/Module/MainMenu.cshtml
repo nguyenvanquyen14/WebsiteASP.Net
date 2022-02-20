@@ -1,0 +1,17 @@
+﻿@model IEnumerable<MyClass.Models.Menu>
+<div class="header_bottom">
+    <div class="menu">
+        <ul>
+            @foreach (var menu in Model)
+            {
+                @Html.Action("MainMenuSub", "Module", new { @id = menu.Id })
+            }
+        </ul>
+    </div>
+    <div class="search_box">
+        <form>
+            <input type="text" value="Tìm kiếm" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
+        </form>
+    </div>
+    <div class="clear"></div>
+</div>

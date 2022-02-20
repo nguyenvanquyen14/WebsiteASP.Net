@@ -1,0 +1,81 @@
+﻿@model MyClass.Models.Product
+
+@{
+    ViewBag.Title = "Chi tiết danh mục sản phẩm ";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content my-2">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong> CHI TIẾT DANH MỤC SẢN PHẨM </strong>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <a href="@Url.Action("Edit","Product", new { id = Model.Id })" class=" btn btn-sm btn-success"><i class="fas fa-edit"></i> Cập nhật </a>
+                        <a href="@Url.Action("Index","Product")" class=" btn btn-sm btn-info"><i class="fas fa-long-arrow-alt-left"></i> Trả về danh sách </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body ">
+                <table class="table table-bordered">
+                    <tr>
+                        <th style="width:120px"> Tên trường </th>
+                        <th> Nội dung </th>
+                    </tr>
+                    <tr>
+                        <td> Tên sản phẩm</td>
+                        <td> @Html.DisplayFor(model => model.Name) </td>
+                    </tr>
+                    <tr>
+                        <td> Liên kết sản phẩm </td>
+                        <td> @Html.DisplayFor(model => model.Slug) </td>
+                    </tr>
+                    <tr>
+                        <td> Mã loại sản phẩm </td>
+                        <td> @Html.DisplayFor(model => model.Catid) </td>
+                    </tr>
+                    <tr>
+                        <td> Chi tiết sản phẩm </td>
+                        <td> @Html.DisplayFor(model => model.MetaDesc) </td>
+                    </tr>
+                    <tr>
+                        <td>  Từ Khóa </td>
+                        <td> @Html.DisplayFor(model => model.Metakey) </td>
+                    </tr>
+                    <tr>
+                        <td> Người tạo </td>
+                        <td> @Html.DisplayFor(model => model.Created_By) </td>
+                    </tr>
+                    <tr>
+                        <td> Tạo lúc </td>
+                        <td>  @Html.DisplayFor(model => model.Created_At) </td>
+                    </tr>
+                    <tr>
+                        <td> Người cập nhật </td>
+                        <td> @Html.DisplayFor(model => model.Updated_By) </td>
+                    </tr>
+                    <tr>
+                        <td> Cập nhật lúc </td>
+                        <td> @Html.DisplayFor(model => model.Updated_At) </td>
+                    </tr>
+                    <tr>
+                        <td>Trạng thái </td>
+                        <td> @Html.DisplayFor(model => model.Status) </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

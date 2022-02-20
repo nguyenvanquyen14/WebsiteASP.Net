@@ -1,0 +1,14 @@
+﻿@model IEnumerable<MyClass.Models.Category>
+
+
+<div class="rightsidebar span_3_of_1">
+    <h2>CATEGORIES</h2>
+    <ul class="side-w3ls">
+        @foreach (var category in Model)
+        {
+            <li><a href="~/@category.Slug">@category.Name</a></li>
+        }
+       
+    </ul>
+</div>
+

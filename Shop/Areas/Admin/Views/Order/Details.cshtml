@@ -1,0 +1,137 @@
+﻿@model MyClass.Models.Order
+
+@{
+    ViewBag.Title = "Chi tiết danh mục sản phẩm ";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content my-2">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong> CHI TIẾT DANH MỤC ORDER </strong>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <a href="@Url.Action("Index","Order")" class=" btn btn-sm btn-info"><i class="fas fa-long-arrow-alt-left"></i> Trả về danh sách </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body ">
+                <h2>THÔNG TIN KHÁCH HÀNG</h2>
+                <table class="table table-bordered">
+                    <tr>
+                        <td>Mã khách hàng</td>
+                        <td>@Model.Userid</td>
+                    </tr>
+                    <tr>
+                        <td>Tên khách hàng</td>
+                        <td>@Html.Action("NameCustomer", "User", new { userid = Model.Userid })</td>
+                    </tr>
+                    <tr>
+                        <td>Địa chỉ</td>
+                        <td>@Model.Deliveryaddress</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>@Model.Deliveryemail</td>
+                    </tr>
+                    <tr>
+                        <td>Điện thoại</td>
+                        <td>@Model.Deliveryphone</td>
+                    </tr>
+                    <tr>
+                        <td>Thông tin người nhận</td>
+                        <td>@Model.Code</td>
+                    </tr>
+                    <tr>
+                        <td>Ghi chú</td>
+                        <td>@Model.Note</td>
+                    </tr>
+                    <tr>
+                        <td>Trạng thái</td>
+                        <td>
+                            @if (Model.Status == 1)
+                            {
+                                <i class="btn btn-sm btn-default"> Chưa xác minh </i>
+                            }
+                            else
+                            {
+                                if (Model.Status == 2)
+                                {
+                                    <i class="btn btn-sm btn-default"> Đã xác minh </i>
+                                }
+                                if (Model.Status == 3)
+                                {
+                                    <i class="btn btn-sm btn-success"> Đang vẫn chuyển </i>
+                                }
+                                if (Model.Status == 4)
+                                {
+                                    <i class="btn btn-sm btn-success">Thành công  </i>
+                                }
+                            }
+                        </td>
+                    </tr>
+                </table>
+                <h2>CHI TIẾT ĐƠN HÀNG</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Mã sản phẩm</th>
+                            <th style="width:120px;">Hình</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ decimal tongtien = 0;}
+                        @foreach (var ct in ViewBag.ListChiTiet)
+                        {
+                            <tr>
+                                <td>@ct.Productid</td>
+                                <td><img src="~/Public/images/products/@Html.Action("ProductImg", "Product", new {productid = ct.Productid })" class="img-fluid" /></td>
+                                <td>@Html.Action("ProductName", "Product", new { productid = ct.Productid })</td>
+                                <td>@ct.Price</td>
+                                <td>@ct.Qty</td>
+                                <td>@ct.Amount</td>
+                            </tr>
+                            tongtien += ct.Amount;
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="4">
+                                <a href="@Url.Action("Destroy","Order", new { id = Model.Id })" class=" btn btn-sm btn-info">
+                                    Hủy
+                                </a>
+                                <a href="@Url.Action("DaXacMinh","Order", new { id = Model.Id })" class=" btn btn-sm btn-info">
+                                    Đã xác minh
+                                </a>
+                                <a href="@Url.Action("DangVanChuyen","Order", new { id = Model.Id })" class=" btn btn-sm btn-info">
+                                    Đang vận chuyển
+                                </a>
+                                <a href="@Url.Action("ThanhCong","Order", new { id = Model.Id })" class=" btn btn-sm btn-info">
+                                    Thành công
+                                </a>
+                            </th>
+                            <th>Tổng tiền</th>
+                            <th>@tongtien</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

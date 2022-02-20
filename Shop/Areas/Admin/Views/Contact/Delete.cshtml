@@ -1,0 +1,86 @@
+﻿@model MyClass.Models.Contact
+
+@{
+    ViewBag.Title = "Xóa loại sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content my-2">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong> XÁC NHẬN XÓA LIÊN HỆ </strong>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <a href="@Url.Action("Edit", "Contact", new { id = Model.Id })" class=" btn btn-sm btn-success"><i class="fas fa-edit"></i> Cập nhật </a>
+                            <a href="@Url.Action("Index", "Contact")" class=" btn btn-sm btn-info"><i class="fas fa-long-arrow-alt-left"></i> Trả về danh sách </a>
+                            <button class="btn btn-sm btn-danger" type="submit"> <i class="fas fa-trash-alt"></i> Xóa </button>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="card-body ">
+                <table class="table table-bordered">
+                    <tr>
+                        <th style="width:120px"> Tên trường </th>
+                        <th> Nội dung </th>
+                    </tr>
+                    <tr>
+                        <td> @Html.DisplayNameFor(model => model.Fullname) </td>
+                        <td> @Html.DisplayFor(model => model.Fullname) </td>
+                    </tr>
+                    <tr>
+                        <td>  @Html.DisplayNameFor(model => model.Email) </td>
+                        <td> @Html.DisplayFor(model => model.Email) </td>
+                    </tr>
+                    <tr>
+                        <td> @Html.DisplayNameFor(model => model.Phone) </td>
+                        <td> @Html.DisplayFor(model => model.Phone) </td>
+                    </tr>
+                    <tr>
+                        <td> @Html.DisplayNameFor(model => model.Title) </td>
+                        <td> @Html.DisplayFor(model => model.Title) </td>
+                    </tr>
+                    <tr>
+                        <td> @Html.DisplayNameFor(model => model.Detail) </td>
+                        <td> @Html.DisplayFor(model => model.Detail) </td>
+                    </tr>
+                    <tr>
+                        <td>  @Html.DisplayNameFor(model => model.ReplayDetail) </td>
+                        <td> @Html.DisplayFor(model => model.ReplayDetail) </td>
+                    </tr>
+                    <tr>
+                        <td> @Html.DisplayNameFor(model => model.MetaDesc) </td>
+                        <td> @Html.DisplayFor(model => model.MetaDesc) </td>
+                    </tr>
+                    <tr>
+                        <td> @Html.DisplayNameFor(model => model.Created_At) </td>
+                        <td>  @Html.DisplayFor(model => model.Created_At) </td>
+                    </tr>                 
+                    <tr>
+                        <td>  @Html.DisplayNameFor(model => model.Updated_At) </td>
+                        <td> @Html.DisplayFor(model => model.Updated_At) </td>
+                    </tr>
+                    <tr>
+                        <td> @Html.DisplayNameFor(model => model.Status) </td>
+                        <td> @Html.DisplayFor(model => model.Status) </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

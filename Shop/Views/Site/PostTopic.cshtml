@@ -1,0 +1,29 @@
+﻿@model IEnumerable<MyClass.Models.Post>
+    @{ 
+        var topic = ViewBag.Topic;
+    }
+@{
+    ViewBag.Title = topic.Name ;
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+    <div class="main">
+        <div class="content">
+            @foreach (var post in Model)
+            {
+                <div class="image group">
+
+                    <div class="grid images_3_of_1">
+                        <a href="~/@post.Slug"><img src="~/Public/images/posts/@post.Img" class="img-fluid" /></a>
+                    </div>
+                    <div class="grid news_desc">
+                        <h3><a href="~/@post.Slug">@post.Title</a></h3>
+                        <p>@XString.Str_Limit(post.Detail, 1000)</p>
+                        <div class="text-right"><a href="~/@post.Slug"> xem thêm </a></div>
+                    </div>
+                    
+                </div>
+            }
+            </div>
+    </div>
+

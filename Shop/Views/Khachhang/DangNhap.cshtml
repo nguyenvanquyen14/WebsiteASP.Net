@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+@using (Html.BeginForm("DangNhap", "Khachhang", FormMethod.Post))
+{
+    <section class="maincontent clearfix">
+        <div class="container my-3">
+            <h3 class="text-center h3"> ĐĂNG NHẬP </h3>
+            <div class="content">
+                <div class="form-group my-3">
+                    <label>Tên đăng nhập</label>
+                    <input name="username" type="text" class="form-control" />
+                </div>
+                <div class="form-group  my-2">
+                    <label>Mật khẩu</label>
+                    <input name="password" type="password" class="form-control" />
+                </div>
+                <div class="form-group  my-2">
+                    <button type="submit" class="btn btn-success"> Đăng nhập </button>
+                </div>
+                <div class="form-group  my-2">
+                    @Html.Raw(ViewBag.Error)
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
